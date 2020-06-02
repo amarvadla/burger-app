@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Aux from '../../hoc/Aux';
+import Aux from '../../hoc/Auxi2';
 import Burger from '../../components/Burger/Burger'
 import BuildControls from '../../components/Burger/BuildControls/BuildControls'
 import Modal from '../../components/Layout/UI/Modal/Modal'
@@ -96,20 +96,19 @@ class BurgerBuilder extends Component {
             disableInfo[key] = disableInfo[key] <= 0
         }
 
-        return (
-            <Aux>
-                <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
-                    <OrderSummary ingredients={this.state.ingredients} purchaseCanceled={this.purchaseCancelHandler}
-                        purchaseContinue={this.purchaseContinueHandler} totalPrice={this.state.totalPrice} />
-                </Modal>
-                <Burger ingredients={this.state.ingredients} />
-                <BuildControls ingredientAdded={this.addIngredientHandler}
+        return (<Aux >
+            <Modal show={this.state.purchasing}
+                modalClosed={this.purchaseCancelHandler} >
+                <OrderSummary ingredients={this.state.ingredients}
+                    purchaseCanceled={this.purchaseCancelHandler}
+                    purchaseContinue={this.purchaseContinueHandler}
+                    totalPrice={this.state.totalPrice}
+                /> </Modal> <Burger ingredients={this.state.ingredients} /> <BuildControls ingredientAdded={this.addIngredientHandler}
                     ingredientRemoved={this.removeIngredientHandler}
                     disabled={disableInfo}
                     price={this.state.totalPrice}
                     purchasable={this.state.purchasable}
-                    ordered={this.purchaseHandler} />
-            </Aux>
+                    ordered={this.purchaseHandler} /> </Aux>
         );
     }
 
